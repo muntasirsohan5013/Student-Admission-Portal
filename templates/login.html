@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!-- <link rel="icon" href="{{ url_for('static', filename= 'img/icon.png') }}" type="image/png"> -->
+  <title></title>
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
+</head>
+<body>
+  
+
+  <nav>
+    <div class="logo">
+      <a href="{{ url_for('index') }}">
+      <h3 class="logo-text ">Education-<span  class="logo-wlc">CHINA</span></h3></a>
+    </div>
+  </nav>
+
+  <!-- Log in form -->
+  <section class="log_in_from">
+    <div id="loginForm">
+      <form method="POST" action="{{ url_for('login') }}">
+        <input type="text" class="middle" placeholder="User name" required name="username">
+        <input type="text" class="middle" placeholder="Email" required name="email" id="loginEmail">
+        <input type="password" class="middle" placeholder="Password" required name="password">
+        <button type="submit" id="loginButton">Log in</button>
+        <a href="{{ url_for('register') }}">Register Here</a> <br>
+        <a href="{{ url_for('reset_password') }}">Forgot Password?</a>
+        
+        <div class="msg_text"> 
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% endwith %}
+        </div>
+      </form>
+    </div>
+  </section>
+
+ 
+
+
+
+
+</body>
+</html>
